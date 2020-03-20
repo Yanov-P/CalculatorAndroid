@@ -16,6 +16,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if(editText.text.isNotEmpty()){
+            val msg = editText.text.toString()
+            val res = Expressions().evalToString(msg)
+            textView.text = res
+        }
+
         loopThrough(tableLayout)
         for (i in buttons){
             i.setOnClickListener(this)
@@ -23,7 +29,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         button_send.setOnClickListener {
             val msg = editText.text.toString()
-
             val res = Expressions().evalToString(msg)
             textView.text = res
         }
